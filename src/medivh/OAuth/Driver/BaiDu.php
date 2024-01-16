@@ -91,7 +91,12 @@ class BaiDu implements OAuthInterface {
     }
 
     public function getRefreshTokenParams(string $refreshToken): array {
-        return [];
+        return [
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $refreshToken,
+            'client_id' => $this->getConfig('appid'),
+            'client_secret' => $this->getConfig('secret'),
+        ];
     }
 
     public function getAccessTokenMethod(): string {
@@ -107,7 +112,10 @@ class BaiDu implements OAuthInterface {
     }
 
     public function getUserInfoParams(): array {
-        return ['access_token' => $this->getAccessToken()];
+        return [
+			'access_token' => $this->getAccessToken(),
+			'get_unionid' => empty($this->getConfig('get_unionid')) ? 0:1 ,
+		];
     }
 
     public function setAccessTokenInfo(string $accessTokenInfo): OAuthInterface {
@@ -140,7 +148,7 @@ class BaiDu implements OAuthInterface {
             $response = $client->request('GET', $this->userInfoUri, ['query' => $params]);
             $responseContents = json_decode($response->getBody()->getContents(), true);
 
-            $this->openId = $responseContents['userid'];
+            $this->openId = $responseContents['openid'];
         }
         exit;
     }
