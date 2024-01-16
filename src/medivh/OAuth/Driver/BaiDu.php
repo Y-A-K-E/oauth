@@ -53,8 +53,9 @@ class BaiDu implements OAuthInterface {
             'redirect_uri' => $this->getConfig('redirect_uri'),
             'display' => $this->getConfig('display'),
 			'qrcode'=> empty($this->getConfig('qrcode')) ? 0:1 ,
-			'qrloginfrom'=> $this->getConfig('qrloginfrom'),
+			'qrloginfrom'=> empty($this->getConfig('qrloginfrom'))? $this->getConfig('qrloginfrom') : $this->getConfig('display') ,
 			'confirm_login'=> empty($this->getConfig('confirm_login')) ? 0:1 ,
+			'scope'=> empty($this->getConfig('scope')) ? empty($this->getConfig('scope')) : '' 
         ];
     }
 
@@ -66,9 +67,11 @@ class BaiDu implements OAuthInterface {
     public function getConfig(string $key): string {
         if (array_key_exists($key, $this->config)) {
             return $this->config[$key];
+        }else{
+            return '';
         }
 
-        throw new ConfigNotFound("配置参数{$key}未找到");
+        //throw new ConfigNotFound("配置参数{$key}未找到");
     }
 
     public function getAccessTokenUri(): string {
