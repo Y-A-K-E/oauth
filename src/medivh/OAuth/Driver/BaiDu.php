@@ -53,9 +53,9 @@ class BaiDu implements OAuthInterface {
             'redirect_uri' => $this->getConfig('redirect_uri'),
             'display' => $this->getConfig('display'),
 			'qrcode'=> empty($this->getConfig('qrcode')) ? 0:1 ,
-			'qrloginfrom'=> empty($this->getConfig('qrloginfrom'))? $this->getConfig('qrloginfrom') : $this->getConfig('display') ,
+			'qrloginfrom'=> empty($this->getConfig('qrloginfrom'))? $this->getConfig('display') : $this->getConfig('qrloginfrom') ,
 			'confirm_login'=> empty($this->getConfig('confirm_login')) ? 0:1 ,
-			'scope'=> empty($this->getConfig('scope')) ? empty($this->getConfig('scope')) : '' 
+			'scope'=> empty($this->getConfig('scope')) ?  '' : $this->getConfig('scope') 
         ];
     }
 
