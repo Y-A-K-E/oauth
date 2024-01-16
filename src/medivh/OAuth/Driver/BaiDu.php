@@ -23,7 +23,7 @@ class BaiDu implements OAuthInterface {
 
     protected $userInfoUri = 'https://openapi.baidu.com/rest/2.0/passport/users/getInfo';
 	
-	protected $userInfoUriWithPan = 'https://pan.baidu.com/rest/2.0/xpan/nas?method=uinfo';
+	protected $userInfoUriWithPan = 'https://pan.baidu.com/rest/2.0/xpan/nas';
 
     protected $config = [];
 
