@@ -1,6 +1,6 @@
 {
   "name": "medivh/oauth",
-  "description": "第三方登录，QQ，微信",
+  "description": "第三方登录，QQ，微信，baidu，steam",
   "minimum-stability": "dev",
   "license": "MIT",
   "authors": [
@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "guzzlehttp/guzzle": "^6.3"
+    "guzzlehttp/guzzle": ">6.0"
   },
   "autoload": {
     "psr-4": {

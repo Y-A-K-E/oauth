@@ -1,7 +1,28 @@
+#### 原作者
+https://github.com/medivh-jay/oauth
+
+
+
+
+#### 修改的地方
+
+实际上只是改了下guzzlehttp/guzzle依赖的版本,命名空间还是用的原作者的名字.
+
+另外计划调整百度获取用户名相关.
+
+
+
+
+
+
+
+
+
+
 #### QQ ， 微信， 百度 三方网站登录
 
 ```
-composer require medivh/oauth dev-master 直接下载
+composer require y-a-k-e/oauth dev-master 直接下载
 ```
 
 ##### QQ 登录
