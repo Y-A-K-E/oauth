@@ -138,6 +138,17 @@ class BaiDu implements OAuthInterface {
         $bdUserInfo = BaiDuUserInfo::decode(json_decode($response, true));
         $this->setOpenId($bdUserInfo->openId);
 
+		//多一个步骤获取隐藏的用户名,如果获取的用户名中有星号,表示用户名就是部分隐藏的,用百度网盘接口获取用户全名
+		if (strpos($bdUserInfo->nickname, '*') !== false) {
+            $params = ['access_token' => $this->getAccessToken()];
+            $client = new Client;
+            $response = $client->request('GET', $this->userInfoUriWithPan, ['query' => $params]);
+            $responseContents = json_decode($response->getBody()->getContents(), true);
+			if ($responseContents['errno'] == 0){
+				$bdUserInfo->nickname = $responseContents['baidu_name'];
+			}  
+		} 
+
         return $bdUserInfo;
     }
 
