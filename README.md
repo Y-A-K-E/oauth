@@ -15,14 +15,20 @@ https://github.com/medivh-jay/oauth
 
 
 
+#### 安装
 
-
-
-
-#### QQ ， 微信， 百度 三方网站登录
+##### composer.json添加repo
 
 ```
-composer require y-a-k-e/oauth dev-master 直接下载
+"repositories": [
+	{
+		"type": "vcs",
+		"url": "https://github.com/Y-A-K-E/oauth.git"
+	}
+],
+```
+```
+composer require medivh/oauth dev-master 直接下载
 ```
 
 ##### QQ 登录

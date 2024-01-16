@@ -22,6 +22,8 @@ class BaiDu implements OAuthInterface {
     protected $AccessTokenURL = 'https://openapi.baidu.com/oauth/2.0/token';
 
     protected $userInfoUri = 'https://openapi.baidu.com/rest/2.0/passport/users/getInfo';
+	
+	protected $userInfoUriWithPan = 'https://pan.baidu.com/rest/2.0/xpan/nas?method=uinfo';
 
     protected $config = [];
 
@@ -49,7 +51,10 @@ class BaiDu implements OAuthInterface {
             'response_type' => 'code',
             'client_id' => $this->getConfig('appid'),
             'redirect_uri' => $this->getConfig('redirect_uri'),
-            'display' => $this->getConfig('display')
+            'display' => $this->getConfig('display'),
+			'qrcode'=> empty($this->getConfig('qrcode')) ? 0:1 ,
+			'qrloginfrom'=> $this->getConfig('qrloginfrom'),
+			'confirm_login'=> empty($this->getConfig('confirm_login')) ? 0:1 ,
         ];
     }
 
